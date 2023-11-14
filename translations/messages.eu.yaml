@@ -1,0 +1,76 @@
+messages.appTitle: "Espedienteak"
+
+app.title.regexpedientes.index: "Espedienteak"
+app.title.regexpedientes.show: "Espedientearen Xehetasunak"
+
+navitem.regexpedientes: "Espedienteak"
+navitem.administration: "Administrazioa"
+navitem.users: "Erabiltzaileak"
+
+link.logout: "Irten"
+
+security.login.username: "Erabiltzailea"
+security.login.password: "Pasahitza"
+security.login.remember_me: "Oroitu"
+security.login.submit: "Sartu"
+security.login.invalid_credentials: 'Erabiltzaile eta pasahitza ez dira zuzenak'
+security.login.system_error: 'Sistema akatsa dela eta, ezin da erabiltzailea konprobatu'
+security.login.remember_password: 'Pasahitza ahaztu zaizu?'
+security.password:
+security.resetted: 'Pasahitza aldatu egin da'
+btn.loginera.itzuli: 'Login orrialdera itzuli'
+'Credenciales no válidas.': 'Kredentzial baliogabeak.'
+
+user.id: "Id"
+user.username: "Erabiltzailea"
+user.firstName: "Izena"
+user.roles: "Rolak"
+user.email: "Emaila"
+user.new_password: "Pasahitza berria"
+user.repeat_new_password: "Pasahitz berria errepikatu"
+
+Id: "Id"
+
+btn.cancel: "Itzuli"
+btn.close: "Itxi"
+btn.save: "Gorde"
+btn.new: "Berria"
+btn.search: "Bilatu"
+btn.show: "Ikusi"
+btn.edit: "Editatu"
+btn.delete: "Ezabatu"
+btn.newZone: "Gune berria"
+btn.clean: "Garbitu"
+btn.adjudicate: "Hilobia adjudikatu"
+btn.yes: "Bai"
+btn.no: "Ez"
+
+messages.confirmacion: "Konfirmazioa"
+messages.confirmationDetail: "¿Ziur al zaude erregistroa ezabatu nahi duzula?"
+messages.results0: "Ez da emaitzaril aurkitu"
+messages.si: "Bai"
+messages.no: "Ez"
+messages.userSaved: "Erabiltzailea behar bezala gorde da"
+messages.userDeleted: "Erabiltzailea behar bezala ezabatu da"
+messages.existingUser: "Erabiltzailea edo emaila dagoeneko existitzen da"
+
+ROLE_USER: "Erabiltzailea"
+ROLE_ADMIN: "Administratzailea"
+
+table.options: "Aukerak"
+
+regexpedientes.kodea: "Kodea"
+regexpedientes.descripcion: "Deskripzioa"
+regexpedientes.tipoexpediente: "Mota"
+regexpedientes.departamento: "Saila"
+regexpedientes.fechaInicio: "Hasiera data"
+regexpedientes.fechaFin: "Amaiera data"
+regexpedientes.dni: "NAN"
+regexpedientes.solicitante: "Eskatzailea"
+regexpedientes.fecha: "Sarrera data"
+
+pasosexpedientes.kodea: "Urratsaren kodea"
+pasosexpedientes.descripcion: "Deskripzioa"
+messages.maxExpedientesReached: "Emaitza kopuruaren maximora heldu da '{maxExpedientes}'. Bilatutako emaitza agertzen ez bada, mesedez bilaketa findu ezazu."
+
+

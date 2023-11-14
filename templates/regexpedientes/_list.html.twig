@@ -1,0 +1,38 @@
+{% if regexpedientes is defined and regexpedientes|length > 0 %}
+   <table class="table"
+      data-toggle="table"
+      data-table-target="table"
+      data-page-number="{{ page }}" 
+      data-page-size="{{ pageSize }}"
+      data-page-sortName="{{ sortName }}"
+      data-page-sortOrder="{{ sortOrder }}">
+      <thead>
+         <tr>
+            <th data-sortable="true">{{ 'regexpedientes.kodea' | trans }}</th>
+            <th data-sortable="true">{{ 'regexpedientes.descripcion' | trans }}</th>
+            <th data-sortable="true">{{ 'regexpedientes.dni' | trans }}</th>
+            <th data-sortable="true">{{ 'regexpedientes.solicitante' | trans }}</th>
+            <th data-sortable="true">{{ 'regexpedientes.fecha' | trans }}</th>
+            <th data-sortable="true" data-field="options">{{"table.options" | trans }}</th>
+         </tr>
+      </thead>
+      <tbody>
+         {% for expediente in regexpedientes %}
+            <tr>
+                  <td>{{ expediente.id }}</td>
+                  <td>{{ expediente.descripcion != null ? expediente.descripcion : '' }}</td>
+                  <td>{{ expediente.dni != null ? expediente.dni : '' }}</td>
+                  <td>{{ expediente.solicitante != null ? expediente.solicitante : '' }}</td>
+                  <td>{{ expediente.fechaentrada != null ? expediente.fechaentrada|date('Y-m-d') : '' }}</td>
+                  <td>
+                     <a href="{{ path('regexpendientes_detail', { regexpediente: expediente.id}) }}" data-action="click->table#onClick" data-pagination="false">
+                        <i class="fa fa-eye" title='{{ "btn.show" | trans | capitalize }}'></i>
+                     </a>&nbsp;
+                  </td>
+            </tr>
+         {% endfor %}
+      </tbody>
+   </table>
+{% else %}
+   <div class="alert alert-secondary mt-3" role="alert">{{"messages.results0" | trans }}</div>
+{% endif %}

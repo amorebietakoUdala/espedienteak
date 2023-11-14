@@ -1,0 +1,35 @@
+{% if pasosexpedientes is defined and pasosexpedientes|length > 0 %}
+   <table class="table"
+      data-toggle="table"
+      data-table-target="table"
+      data-page-number="{{ page }}" 
+      data-page-size="{{ pageSize }}"
+      data-page-sortName="{{ sortName }}"
+      data-page-sortOrder="{{ sortOrder }}">
+      <thead>
+         <tr>
+            <th data-sortable="true">{{ 'pasosexpedientes.kodea' | trans }}</th>
+            <th data-sortable="true">{{ 'pasosexpedientes.descripcion' | trans }}</th>
+            <th data-sortable="true" data-field="options">{{"table.options" | trans }}</th>
+         </tr>
+      </thead>
+      <tbody>
+         {% for pasos in pasosexpedientes %}
+            <tr>
+               <td>{{ pasos.kodea }}</td>
+               <td>{{ pasos.descripcion != null ? pasos.descripcion : '' }}</td>
+               <td>
+                  <a href="{{ asset(pasos.rutaDocumento(urlDocumentos)) }}">
+                     <i class="fa fa-eye" title='{{ "btn.show" | trans | capitalize }}'></i>
+                  </a>&nbsp;
+               </td>
+            </tr>
+         {% endfor %}
+      </tbody>
+   </table>
+{% else %}
+   <div class="alert alert-secondary mt-3" role="alert">{{"messages.results0" | trans }}</div>
+{% endif %}
+<div class="d-flex justify-content-center">
+   <a href="{{ returnUrl }}" class= "btn btn-secondary col-lg-auto">{{ 'btn.cancel' | trans }}</a>
+</div>

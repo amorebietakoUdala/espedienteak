@@ -1,0 +1,51 @@
+{% block message %}
+	{{ include('common/_messages.html.twig') }}
+{% endblock %}
+
+{{ form_start(form) }}
+<div {{ stimulus_controller('regexpedientes-form')}}>
+   <div class="row align-items-center">
+      <div class="col-lg-1 col-md-2 col-sm-6">
+         {{ form_row(form.id, { 'attr': { 'data-regexpedientes-form-target' : "numeroexpedienteInput", 'class' : 'form-control form-control-sm' } }) }}
+      </div>
+      <div class="col-lg-3 col-md-2 col-sm-6">
+         {{ form_row(form.descripcion, { 'attr': { 'data-regexpedientes-form-target' : "descripcionInput", 'class' : 'form-control form-control-sm', } }) }}
+      </div>
+      <div class="col-lg-1 col-md-2 col-sm-6">
+         {{ form_row(form.tipoexpediente, { 'attr': { 'data-regexpedientes-form-target' : "tipoInput", 'class' : 'form-control form-control-sm' } }) }}
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-6">
+         {{ form_row(form.fechaInicio, { 'attr': { 
+               'data-regexpedientes-form-target' : "fechaInicioInput",
+               'class' : 'form-control form-control-sm', 
+               'data-controller' : 'datetimepicker', 'data-datetimepicker-format-value': 'yyyy-MM-dd', 
+            } }) 
+         }}
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-6">
+         {{ form_row(form.fechaFin, { 'attr': { 
+               'data-regexpedientes-form-target' : "fechaFinInput",
+               'class' : 'form-control form-control-sm', 
+               'data-controller' : 'datetimepicker', 'data-datetimepicker-format-value': 'yyyy-MM-dd', 
+         } }) }}
+      </div>
+      <div class="col-lg-1 col-md-2 col-sm-6">
+         {{ form_row(form.departamento, { 'attr': { 'data-regexpedientes-form-target' : "departamentoInput", 'class' : 'form-control form-control-sm' } }) }}
+      </div>
+   </div>
+   <div class="row align-items-center">
+      <div class="col-lg-auto col-md-2 col-sm-6">
+         {{ form_row(form.dni, { 'attr': { 'data-regexpedientes-form-target' : "dniInput", 'class' : 'form-control form-control-sm' } }) }}
+      </div>
+      <div class="col-lg-3 col-md-2 col-sm-6">
+         {{ form_row(form.solicitante, { 'attr': { 'data-regexpedientes-form-target' : "solicitanteInput", 'class' : 'form-control form-control-sm', } }) }}
+      </div>
+      <div class="col-lg-1 col-md-2 col-sm-6">
+         <button class="btn btn-primary" type="submit">{{ 'btn.search' | trans }}</button>
+      </div>
+      <div class="col-lg-1 col-md-2 col-sm-6">
+         <button type="button" class="btn btn-success" data-action="regexpedientes-form#clean">{{ button_label|default('btn.clean')|trans }}</button>
+      </div>
+   </div>
+</div>
+{{ form_end(form) }}
