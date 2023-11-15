@@ -22,9 +22,9 @@ export default class extends Controller {
       if (this.fechaFinInputTarget) {
          $(this.fechaFinInputTarget).val('');
       }
-      if (this.departamentoInputTarget) {
-         $(this.departamentoInputTarget).val('');
-      }
+      // if (this.departamentoInputTarget) {
+      //    $(this.departamentoInputTarget).val('');
+      // }
       if (this.dniInputTarget) {
          $(this.dniInputTarget).val('');
       }

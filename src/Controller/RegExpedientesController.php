@@ -16,11 +16,12 @@ class RegExpedientesController extends BaseController
     private string $urlDocumentos;
     private int $maxExpedientes;
 
-    public function __construct(RegExpedientesRepository $repo, $urlDocumentos = '/documentos', $maxExpedientes = 50)
+    public function __construct(RegExpedientesRepository $repo, $urlDocumentos = '/documentos', $maxExpedientes = 50, $parameters)
     {
         $this->repo = $repo;
         $this->urlDocumentos = $urlDocumentos;
         $this->maxExpedientes = $maxExpedientes;
+        parent::__construct($parameters);
     }
 
     /**

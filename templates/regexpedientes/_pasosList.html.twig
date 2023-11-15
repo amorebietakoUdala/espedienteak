@@ -17,7 +17,7 @@
          {% for pasos in pasosexpedientes %}
             <tr>
                <td>{{ pasos.kodea }}</td>
-               <td>{{ pasos.descripcion != null ? pasos.descripcion : '' }}</td>
+               <td>{{ pasos.descripcion != null ? pasos.descripcion | capitalize : '' }}</td>
                <td>
                   <a href="{{ asset(pasos.rutaDocumento(urlDocumentos)) }}">
                      <i class="fa fa-eye" title='{{ "btn.show" | trans | capitalize }}'></i>

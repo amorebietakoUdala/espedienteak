@@ -20,9 +20,9 @@
          {% for expediente in regexpedientes %}
             <tr>
                   <td>{{ expediente.id }}</td>
-                  <td>{{ expediente.descripcion != null ? expediente.descripcion : '' }}</td>
+                  <td>{{ expediente.descripcion != null ? expediente.descripcion | capitalize : '' }}</td>
                   <td>{{ expediente.dni != null ? expediente.dni : '' }}</td>
-                  <td>{{ expediente.solicitante != null ? expediente.solicitante : '' }}</td>
+                  <td>{{ expediente.solicitante != null ? expediente.solicitante | capitalize : '' }}</td>
                   <td>{{ expediente.fechaentrada != null ? expediente.fechaentrada|date('Y-m-d') : '' }}</td>
                   <td>
                      <a href="{{ path('regexpendientes_detail', { regexpediente: expediente.id}) }}" data-action="click->table#onClick" data-pagination="false">

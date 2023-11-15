@@ -38,10 +38,10 @@ class RegExpedienteSearchFormType extends AbstractType
                 'format' => 'yyyy-MM-dd',
                 'required' => false,
             ])
-            ->add('departamento', null, [
-                'label' => 'regexpedientes.departamento',
-                'required' => false,
-            ])
+            // ->add('departamento', null, [
+            //     'label' => 'regexpedientes.departamento',
+            //     'required' => false,
+            // ])
             ->add('dni', null, [
                 'label' => 'regexpedientes.dni',
                 'required' => false,

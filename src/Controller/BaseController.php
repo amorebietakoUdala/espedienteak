@@ -10,24 +10,27 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BaseController extends AbstractController
 {
-    protected array $queryParams = []; 
+    protected array $queryParams = [];
+    protected array $parameters = [];
+    
+    public function __construct(array $parameters) {
+        $this->queryParams = $parameters;
+        $this->parameters = $parameters;
+    }
 
     protected function loadQueryParameters(Request $request) {
         if (
             $request->getMethod() === Request::METHOD_GET || 
             $request->getMethod() === Request::METHOD_POST || 
             $request->getMethod() === Request::METHOD_DELETE ) {
-            $this->queryParams['page'] = 1;
-            $this->queryParams['pageSize'] = 10;
-            $this->queryParams['sortName'] = 0;
-            $this->queryParams['sortOrder'] = 'asc';
-            $this->queryParams['returnUrl'] = null;
+            $this->setDefaults();
             $this->queryParams = array_merge($this->queryParams, $request->query->all());
             if ( $this->queryParams !== null ) {
                 $query = parse_url($this->queryParams['returnUrl'], PHP_URL_QUERY);
                 parse_str($query,$query);
                 $this->queryParams = array_merge($this->queryParams, $query);
             }
+            dump($this->queryParams);
         }
     }
 
@@ -98,5 +101,13 @@ class BaseController extends AbstractController
     protected function setPage($number): self {
         $this->queryParams['page'] = $number;
         return $this;
+    }
+
+    protected function setDefaults() {
+        $this->queryParams['page'] = isset($this->parameters['page']) ? $this->parameters['page'] : 1;
+        $this->queryParams['pageSize'] = isset($this->parameters['pageSize']) ? $this->parameters['pageSize'] : 10;
+        $this->queryParams['sortName'] = isset($this->parameters['sortName']) ?  $this->parameters['sortName'] : 0;
+        $this->queryParams['sortOrder'] = isset($this->parameters['sortOrder']) ? $this->parameters['pageOrder'] : 'asc';
+        $this->queryParams['returnUrl'] = null;
     }
 }
