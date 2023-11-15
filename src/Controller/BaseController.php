@@ -30,7 +30,6 @@ class BaseController extends AbstractController
                 parse_str($query,$query);
                 $this->queryParams = array_merge($this->queryParams, $query);
             }
-            dump($this->queryParams);
         }
     }
 

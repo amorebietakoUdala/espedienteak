@@ -9,6 +9,7 @@
                     { 'url': path('regexpedientes_index'),
                     'exportName': 'expedientes',
                     'filters': filters is not empty ? filters : '{}',
+                    'options': { 'search' : false, 'showExport' : false },
                 })}}  data-table-target="content">
                 {{ include('regexpedientes/_list.html.twig', { 
                     'regexpedientes': regexpedientes,

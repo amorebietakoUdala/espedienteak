@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "amorebietakoudala/stimulus-controller-bundle",
-            "version": "1.0.8",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amorebietakoUdala/stimulus-controller-bundle.git",
-                "reference": "c51cb7c4493ca6d638522d7251d41387c1923a9e"
+                "reference": "d312fee8bfe114f17493f2ff475b58875ee74429"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amorebietakoUdala/stimulus-controller-bundle/zipball/c51cb7c4493ca6d638522d7251d41387c1923a9e",
-                "reference": "c51cb7c4493ca6d638522d7251d41387c1923a9e",
+                "url": "https://api.github.com/repos/amorebietakoUdala/stimulus-controller-bundle/zipball/d312fee8bfe114f17493f2ff475b58875ee74429",
+                "reference": "d312fee8bfe114f17493f2ff475b58875ee74429",
                 "shasum": ""
             },
             "require": {
@@ -48,9 +48,9 @@
             ],
             "support": {
                 "issues": "https://github.com/amorebietakoUdala/stimulus-controller-bundle/issues",
-                "source": "https://github.com/amorebietakoUdala/stimulus-controller-bundle/tree/1.0.8"
+                "source": "https://github.com/amorebietakoUdala/stimulus-controller-bundle/tree/1.0.9"
             },
-            "time": "2023-06-14T10:51:05+00:00"
+            "time": "2023-11-15T11:21:20+00:00"
         },
         {
             "name": "amorebietakoudala/user-bundle",
