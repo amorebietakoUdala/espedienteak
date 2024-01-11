@@ -7,111 +7,69 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=RegExpedientesRepository::class,readOnly=true)
- * @ORM\Table(name="regexpedientes")
- */
-class RegExpedientes
+#[ORM\Table(name: 'regexpedientes')]
+#[ORM\Entity(repositoryClass: RegExpedientesRepository::class, readOnly: true)]
+class RegExpedientes implements \Stringable
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(name="kodea", type="string")
-     */
+    #[ORM\Id]
+    #[ORM\Column(name: 'kodea', type: 'string')]
     private $id;
 
-    /**
-     * @ORM\Column(name="numero", type="integer")
-     */
+    #[ORM\Column(name: 'numero', type: 'integer')]
     private $numero;
 
-    /**
-     * @ORM\Column(name="descripcion", type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(name: 'descripcion', type: 'string', length: 255, nullable: true)]
     private $descripcion;
 
-    /**
-     * @ORM\Column(name="solicitante", type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(name: 'solicitante', type: 'string', length: 255, nullable: true)]
     private $solicitante;
 
-    /**
-     * @ORM\Column(name="dni", type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(name: 'dni', type: 'string', length: 255, nullable: true)]
     private $dni;
 
-    /**
-     * @ORM\Column(name="fechaentrada", type="datetime", nullable=true)
-     */
+    #[ORM\Column(name: 'fechaentrada', type: 'datetime', nullable: true)]
     private $fechaentrada;
 
-    /**
-     * @ORM\Column(name="fechafinalizacion", type="datetime", nullable=true)
-     */
+    #[ORM\Column(name: 'fechafinalizacion', type: 'datetime', nullable: true)]
     private $fechafinalizacion;
 
-    /**
-     * @ORM\Column(name="tipoexpediente", type="integer", nullable=true)
-     */
+    #[ORM\Column(name: 'tipoexpediente', type: 'integer', nullable: true)]
     private $tipoexpediente;
 
-    /**
-     * @ORM\Column(name="numeroexpediente", type="integer", nullable=true)
-     */
+    #[ORM\Column(name: 'numeroexpediente', type: 'integer', nullable: true)]
     private $numeroexpediente;
 
-    /**
-     * @ORM\Column(name="finalizado", type="boolean")
-     */
+    #[ORM\Column(name: 'finalizado', type: 'boolean')]
     private $finalizado;
 
-    /**
-     * @ORM\Column(name="año", type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(name: 'año', type: 'string', length: 255, nullable: true)]
     private $año;
 
-    /**
-     * @ORM\Column(name="departamento", type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(name: 'departamento', type: 'string', length: 255, nullable: true)]
     private $departamento;
 
-    /**
-     * @ORM\Column(name="documento", type="boolean")
-     */
+    #[ORM\Column(name: 'documento', type: 'boolean')]
     private $documento;
 
-    /**
-     * @ORM\Column(name="expedienterelacionado", type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(name: 'expedienterelacionado', type: 'string', length: 255, nullable: true)]
     private $expendienterelacionado;
 
-    /**
-     * @ORM\Column(name="UltimoPaso", type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(name: 'UltimoPaso', type: 'string', length: 255, nullable: true)]
     private $ultimopaso;
 
-    /**
-     * @ORM\Column(name="Factura", type="boolean")
-     */
+    #[ORM\Column(name: 'Factura', type: 'boolean')]
     private $factura;
 
-    /**
-     * @ORM\Column(name="Archivado", type="boolean")
-     */
+    #[ORM\Column(name: 'Archivado', type: 'boolean')]
     private $archivado;
 
-    /**
-     * @ORM\Column(name="ExpePara", type="boolean")
-     */
+    #[ORM\Column(name: 'ExpePara', type: 'boolean')]
     private $expepara;
 
-    /**
-     * @ORM\Column(name="privado", type="float", nullable=true)
-     */
+    #[ORM\Column(name: 'privado', type: 'float', nullable: true)]
     private $privado;
 
-    /**
-     * @ORM\OneToMany(targetEntity=PasosExpedientes::class, mappedBy="expediente")
-     */
+    #[ORM\OneToMany(targetEntity: PasosExpedientes::class, mappedBy: 'expediente')]
     private $pasosExpedientes;
 
     public function __construct()
@@ -347,9 +305,9 @@ class RegExpedientes
         return $this;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
-        return $this->id;   
+        return (string) $this->id;   
     }
 
     /**

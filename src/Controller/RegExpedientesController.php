@@ -12,21 +12,12 @@ use Symfony\Component\Translation\TranslatableMessage;
 
 class RegExpedientesController extends BaseController
 {
-    private RegExpedientesRepository $repo;
-    private string $urlDocumentos;
-    private int $maxExpedientes;
-
-    public function __construct(RegExpedientesRepository $repo, $urlDocumentos = '/documentos', $maxExpedientes = 50, $parameters)
+    public function __construct(private readonly RegExpedientesRepository $repo, $parameters, private readonly string $urlDocumentos = '/documentos', private readonly int $maxExpedientes = 50)
     {
-        $this->repo = $repo;
-        $this->urlDocumentos = $urlDocumentos;
-        $this->maxExpedientes = $maxExpedientes;
         parent::__construct($parameters);
     }
 
-    /**
-     * @Route("/{_locale}/regexpedientes/{regexpediente}/detail", name="regexpendientes_detail")
-     */
+    #[Route(path: '/{_locale}/regexpedientes/{regexpediente}/detail', name: 'regexpendientes_detail')]
     public function show(Request $request, RegExpedientes $regexpediente): Response
     {
         $this->loadQueryParameters($request);
@@ -40,9 +31,7 @@ class RegExpedientesController extends BaseController
         ]);                
     }
 
-    /**
-     * @Route("/{_locale}/regexpedientes", name="regexpedientes_index")
-     */
+    #[Route(path: '/{_locale}/regexpedientes', name: 'regexpedientes_index')]
     public function index(Request $request): Response
     {
         $this->loadQueryParameters($request);

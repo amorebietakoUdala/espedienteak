@@ -53,9 +53,9 @@ class RegExpedientesRepository extends ServiceEntityRepository
             $criteriaLike = array_intersect_key($criteria,$criteriaLikeKeys);
             $criteriaAnd = array_diff_key($criteria,$criteriaLikeKeys);
         }
-        $from = isset($criteriaAnd['fechaInicio']) ? $criteriaAnd['fechaInicio'] : null;
+        $from = $criteriaAnd['fechaInicio'] ?? null;
         unset($criteriaAnd['fechaInicio']);
-        $to = isset($criteriaAnd['fechaFin']) ? $criteriaAnd['fechaFin'] : null;
+        $to = $criteriaAnd['fechaFin'] ?? null;
         unset($criteriaAnd['fechaFin']);
         $qb = $this->createQueryBuilder('m');
 

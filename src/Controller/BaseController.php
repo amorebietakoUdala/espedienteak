@@ -10,12 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BaseController extends AbstractController
 {
-    protected array $queryParams = [];
     protected array $parameters = [];
     
-    public function __construct(array $parameters) {
-        $this->queryParams = $parameters;
-        $this->parameters = $parameters;
+    public function __construct(protected array $queryParams = []) {
+        $this->parameters = $this->queryParams;
     }
 
     protected function loadQueryParameters(Request $request) {
@@ -26,8 +24,12 @@ class BaseController extends AbstractController
             $this->setDefaults();
             $this->queryParams = array_merge($this->queryParams, $request->query->all());
             if ( $this->queryParams !== null ) {
-                $query = parse_url($this->queryParams['returnUrl'], PHP_URL_QUERY);
-                parse_str($query,$query);
+                $query = parse_url((string) $this->queryParams['returnUrl'], PHP_URL_QUERY);
+                if ( $query === null) {
+                    $query = [];
+                } else {
+                    parse_str($query,$query);
+                }
                 $this->queryParams = array_merge($this->queryParams, $query);
             }
         }
@@ -54,7 +56,7 @@ class BaseController extends AbstractController
     protected function renderForm(string $view, array $parameters = [], Response $response = null): Response {
         $paginationParameters = $this->getPaginationParameters();
         $viewParameters = array_merge($parameters, $paginationParameters);
-        return parent::renderForm($view, $viewParameters, $response);
+        return parent::render($view, $viewParameters, $response);
     }
 
     protected function redirectToRoute(string $route, array $parameters = [], int $status = 302): RedirectResponse {
@@ -81,7 +83,7 @@ class BaseController extends AbstractController
 
     protected function changeDatesToString(&$criteria) {
         foreach ( $criteria as $key => $value) {
-            if (gettype($value) === 'object' && get_class($value) === 'DateTime') {
+            if (gettype($value) === 'object' && $value::class === 'DateTime') {
                 $criteria[$key] = $value->format('Y-m-d');
             }
         }
@@ -90,7 +92,7 @@ class BaseController extends AbstractController
 
     protected function changeStringToDates(&$criteria) {
         foreach ( $criteria as $key => $value) {
-            if ( str_starts_with($key, 'fecha') || str_starts_with($key, 'date') ) {
+            if ( str_starts_with((string) $key, 'fecha') || str_starts_with((string) $key, 'date') ) {
                 $criteria[$key] = new DateTime($value);
             }
         }
@@ -103,9 +105,9 @@ class BaseController extends AbstractController
     }
 
     protected function setDefaults() {
-        $this->queryParams['page'] = isset($this->parameters['page']) ? $this->parameters['page'] : 1;
-        $this->queryParams['pageSize'] = isset($this->parameters['pageSize']) ? $this->parameters['pageSize'] : 10;
-        $this->queryParams['sortName'] = isset($this->parameters['sortName']) ?  $this->parameters['sortName'] : 0;
+        $this->queryParams['page'] = $this->parameters['page'] ?? 1;
+        $this->queryParams['pageSize'] = $this->parameters['pageSize'] ?? 10;
+        $this->queryParams['sortName'] = $this->parameters['sortName'] ?? 0;
         $this->queryParams['sortOrder'] = isset($this->parameters['sortOrder']) ? $this->parameters['pageOrder'] : 'asc';
         $this->queryParams['returnUrl'] = null;
     }

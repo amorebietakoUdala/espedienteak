@@ -5,82 +5,52 @@ namespace App\Entity;
 use App\Repository\PasosExpedientesRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=PasosExpedientesRepository::class,readOnly=true)
- * @ORM\Table(name="pasosexpedientes")
- */
+#[ORM\Table(name: 'pasosexpedientes')]
+#[ORM\Entity(repositoryClass: PasosExpedientesRepository::class, readOnly: true)]
 class PasosExpedientes
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(name="kodea", type="string")
-     */
+    #[ORM\Id]
+    #[ORM\Column(name: 'kodea', type: 'string')]
     private $kodea;
 
-    /**
-     * @ORM\Column(name="numero", type="integer", nullable=true)
-     */
+    #[ORM\Column(name: 'numero', type: 'integer', nullable: true)]
     private $numero;
 
-    /**
-     * @ORM\Column(name="paso", type="integer", nullable=true)
-     */
+    #[ORM\Column(name: 'paso', type: 'integer', nullable: true)]
     private $paso;
 
-    /**
-     * @ORM\Column(name="departamento", type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(name: 'departamento', type: 'string', length: 255, nullable: true)]
     private $departamento;
 
-    /**
-     * @ORM\Column(name="descripcion", type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(name: 'descripcion', type: 'string', length: 255, nullable: true)]
     private $descripcion;
 
-    /**
-     * @ORM\Column(name="plazo", type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(name: 'plazo', type: 'string', length: 255, nullable: true)]
     private $plazo;
 
-    /**
-     * @ORM\Column(name="terminado", type="boolean")
-     */
+    #[ORM\Column(name: 'terminado', type: 'boolean')]
     private $terminado;
 
-    /**
-     * @ORM\Column(name="pasosiguiente", type="boolean")
-     */
+    #[ORM\Column(name: 'pasosiguiente', type: 'boolean')]
     private $pasosiguiente;
 
-    /**
-     * @ORM\Column(name="fechapaso", type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(name: 'fechapaso', type: 'string', length: 255, nullable: true)]
     private $fechapaso;
 
-    /**
-     * @ORM\Column(name="publico", type="boolean")
-     */
+    #[ORM\Column(name: 'publico', type: 'boolean')]
     private $publico;
 
-    /**
-     * @ORM\Column(name="plantilla", type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(name: 'plantilla', type: 'string', length: 255, nullable: true)]
     private $plantilla;
 
-    /**
-     * @ORM\Column(name="condto", type="boolean")
-     */
+    #[ORM\Column(name: 'condto', type: 'boolean')]
     private $condto;
 
-    /**
-     * @ORM\Column(name="documentocreado", type="boolean", nullable=true)
-     */
+    #[ORM\Column(name: 'documentocreado', type: 'boolean', nullable: true)]
     private $documentocreado;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=RegExpedientes::class, inversedBy="pasosExpedientes")
-     * @ORM\JoinColumn(name="numeroExpediente", referencedColumnName="kodea", nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: RegExpedientes::class, inversedBy: 'pasosExpedientes')]
+    #[ORM\JoinColumn(name: 'numeroExpediente', referencedColumnName: 'kodea', nullable: false)]
     private $expediente;
 
     public function getKodea(): ?string
