@@ -222,7 +222,7 @@ class PasosExpedientes
     }
 
     public function getNombreDocumento(): string {
-        return "{$this->departamento}-{$this->getExpediente()->getTipoexpediente()}-{$this->paso}-{$this->getExpediente()}.pdf";
+        return "{$this->departamento}-{$this->getExpediente()->getTipoexpediente()}-{$this->paso}-{$this->getExpediente()}.doc";
     }
 
     public function getRutaDocumento($base): string {
