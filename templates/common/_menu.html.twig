@@ -4,8 +4,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+    <ul class="navbar-nav">
 			<li class="nav-item">
 				<a class="nav-link {{ 
 					app.request.attributes.get('_route') == 'regexpedientes_index' or
@@ -24,8 +24,11 @@
 					</div>
 				</li>
 				{% endif %}
-      {% endif %}
+      	{% endif %}
     </ul>
+	<div class="navbar-text mr-1">
+		* {{ 'navitem.hint' | trans | capitalize }}&nbsp;&nbsp;&nbsp;
+	</div>
   </div>
 
 </nav>

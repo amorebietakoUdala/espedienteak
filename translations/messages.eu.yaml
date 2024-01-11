@@ -6,6 +6,7 @@ app.title.regexpedientes.show: "Espedientearen Xehetasunak"
 navitem.regexpedientes: "Espedienteak"
 navitem.administration: "Administrazioa"
 navitem.users: "Erabiltzaileak"
+navitem.hint: "Ez da komodin ikurra erabili behar"
 
 link.logout: "Irten"
 

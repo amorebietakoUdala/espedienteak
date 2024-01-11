@@ -6,6 +6,7 @@ app.title.regexpedientes.show: "Detalles Expediente"
 navitem.regexpedientes: "Expedientes"
 navitem.administration: "Administración"
 navitem.users: "Usuarios"
+navitem.hint: "No es necesario usar caracter comodín"
 
 link.logout: "Salir"
 
