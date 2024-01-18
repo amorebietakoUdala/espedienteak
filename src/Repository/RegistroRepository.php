@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\RegExpedientes;
+use App\Entity\Registro;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<RegExpedientes>
+ * @extends ServiceEntityRepository<Registro>
  *
- * @method RegExpedientes|null find($id, $lockMode = null, $lockVersion = null)
- * @method RegExpedientes|null findOneBy(array $criteria, array $orderBy = null)
- * @method RegExpedientes[]    findAll()
- * @method RegExpedientes[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Registro|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Registro|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Registro[]    findAll()
+ * @method Registro[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class RegExpedientesRepository extends ServiceEntityRepository
+class RegistroRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, RegExpedientes::class);
+        parent::__construct($registry, Registro::class);
     }
 
-    public function add(RegExpedientes $entity, bool $flush = false): void
+    public function add(Registro $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class RegExpedientesRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(RegExpedientes $entity, bool $flush = false): void
+    public function remove(Registro $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class RegExpedientesRepository extends ServiceEntityRepository
     }
 
     /**
-    * @return RegExpedientes[] Returns an array of RegExpedientes objects
+    * @return Movement[] Returns an array of Movement objects
     */
     public function findByCriteria($criteria, $orderBy = null, $limit = null, $offset = null): array
     {

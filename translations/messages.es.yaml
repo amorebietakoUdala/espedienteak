@@ -2,6 +2,9 @@ messages.appTitle: "Expedientes"
 
 app.title.regexpedientes.index: "Expedientes"
 app.title.regexpedientes.show: "Detalles Expediente"
+app.title.registros.index: "Registros"
+
+modal.title.entrys: "Registros"
 
 navitem.regexpedientes: "Expedientes"
 navitem.administration: "Administración"
@@ -45,6 +48,11 @@ btn.clean: "Limpiar"
 btn.adjudicate: "Adjudicar sepultura"
 btn.yes: "Sí"
 btn.no: "No"
+btn.steps: "Pasos"
+btn.records: "Registros"
+btn.input: "Entradas"
+btn.output: "Salidas"
+btn.office: "Oficio"
 
 messages.confirmacion: "Confirmación"
 messages.confirmationDetail: "¿Esta seguro de que desea eliminar el registro?"
@@ -54,6 +62,8 @@ messages.no: "No"
 messages.userSaved: "El usuario se ha guardado correctamente"
 messages.userDeleted: "El usuario se ha eliminado correctamente"
 messages.existingUser: "El nombre de usuario o el email ya existe"
+messages.maxExpedientesReached: "Se ha alcanzado el máximo número de resultados '{maxExpedientes}'. Si el resultado esperado no aparece, refine la búsqueda."
+messages.documentNotFound: "No hay documento asociado"
 
 label.yes: "Sí"
 label.no: "No"
@@ -74,7 +84,14 @@ regexpedientes.fechaFin: "Fecha fin"
 regexpedientes.dni: "DNI"
 regexpedientes.solicitante: "Solicitante"
 regexpedientes.fecha: "Fecha de entrada"
+regexpedientes.registros: "Registros"
 
 pasosexpedientes.kodea: "Código del paso"
 pasosexpedientes.descripcion: "Descripción"
-messages.maxExpedientesReached: "Se ha alcanzado el máximo número de resultados '{maxExpedientes}'. Si el resultado esperado no aparece, refine la búsqueda."
+pasosexpedientes.fechapaso: "Fecha"
+
+registro.id: "Id"
+registro.tipo: "Tipo"
+registro.descripcion: "Descripción"
+
+

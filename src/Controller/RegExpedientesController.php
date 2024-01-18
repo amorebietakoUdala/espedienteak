@@ -4,15 +4,23 @@ namespace App\Controller;
 
 use App\Entity\RegExpedientes;
 use App\Form\RegExpedienteSearchFormType;
+use App\Repository\PasosExpedientesRepository;
 use App\Repository\RegExpedientesRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Translation\TranslatableMessage;
+use \Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_ESPEDIENTEAK')]
 class RegExpedientesController extends BaseController
 {
-    public function __construct(private readonly RegExpedientesRepository $repo, $parameters, private readonly string $urlDocumentos = '/documentos', private readonly int $maxExpedientes = 50)
+    public function __construct(
+        private readonly PasosExpedientesRepository $pasosRepo, 
+        private readonly RegExpedientesRepository $repo,
+        $parameters, 
+        private readonly string $urlDocumentos = '/documentos', 
+        private readonly int $maxExpedientes = 50)
     {
         parent::__construct($parameters);
     }
@@ -23,11 +31,12 @@ class RegExpedientesController extends BaseController
         $this->loadQueryParameters($request);
         $criteria = $request->query->all();
         $criteria = $this->removePaginationParameters($criteria);
-        $pasosexpedientes = $regexpediente->getPasosExpedientes();
+        $pasosexpedientes = $this->pasosRepo->getPasosExpendienteOrdered($regexpediente);
         $template = !$this->getAjax() ? 'regexpedientes/show.html.twig' : 'regexpedientes/_pasosList.html.twig';
         return $this->renderForm($template, [
             'pasosexpedientes' => $pasosexpedientes,
             'urlDocumentos' => $this->urlDocumentos,
+            'filters' => $criteria,
         ]);                
     }
 

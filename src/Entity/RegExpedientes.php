@@ -72,9 +72,13 @@ class RegExpedientes implements \Stringable
     #[ORM\OneToMany(targetEntity: PasosExpedientes::class, mappedBy: 'expediente')]
     private $pasosExpedientes;
 
+    #[ORM\OneToMany(mappedBy: 'expediente', targetEntity: Registro::class)]
+    private Collection $registros;
+
     public function __construct()
     {
         $this->pasosExpedientes = new ArrayCollection();
+        $this->registros = new ArrayCollection();
     }
 
     public function getId(): ?string
@@ -334,6 +338,36 @@ class RegExpedientes implements \Stringable
             // set the owning side to null (unless already changed)
             if ($pasosExpediente->getExpediente() === $this) {
                 $pasosExpediente->setExpediente(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Registro>
+     */
+    public function getRegistros(): Collection
+    {
+        return $this->registros;
+    }
+
+    public function addRegistro(Registro $registro): static
+    {
+        if (!$this->registros->contains($registro)) {
+            $this->registros->add($registro);
+            $registro->setExpediente($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRegistro(Registro $registro): static
+    {
+        if ($this->registros->removeElement($registro)) {
+            // set the owning side to null (unless already changed)
+            if ($registro->getExpediente() === $this) {
+                $registro->setExpediente(null);
             }
         }
 

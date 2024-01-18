@@ -6561,6 +6561,7 @@ __metadata:
     file-loader: ^6.0.0
     jquery: 3.6.1
     regenerator-runtime: ^0.13.9
+    sweetalert2: ^11.10.3
     webpack: ^5.74.0
     webpack-cli: ^4.10.0
     webpack-notifier: ^1.15.0
@@ -7131,6 +7132,13 @@ __metadata:
   version: 11.4.8
   resolution: "sweetalert2@npm:11.4.8"
   checksum: 6dcb2eac662a9748a8695ef0614cadfaa4b462e120effc66c0e739320d31818bfd64708a71af4ebfff516bd00a54aeaf0945f5e7564abf714ec9c9cf88c8a174
+  languageName: node
+  linkType: hard
+
+"sweetalert2@npm:^11.10.3":
+  version: 11.10.3
+  resolution: "sweetalert2@npm:11.10.3"
+  checksum: db07199bb5069384db94d6d5075c7c9d2016d638037f85464f53d0993888cf45aaf2da9b4bd6bd14f2966316091e15528d4403e4cc2c21623ed2199fae74b5f4
   languageName: node
   linkType: hard
 

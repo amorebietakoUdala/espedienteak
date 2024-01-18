@@ -10,6 +10,7 @@
          <tr>
             <th data-sortable="true">{{ 'pasosexpedientes.kodea' | trans }}</th>
             <th data-sortable="true">{{ 'pasosexpedientes.descripcion' | trans }}</th>
+            <th data-sortable="true">{{ 'pasosexpedientes.fechapaso' | trans }}</th>
             <th data-sortable="true" data-field="options">{{"table.options" | trans }}</th>
          </tr>
       </thead>
@@ -18,10 +19,11 @@
             <tr>
                <td>{{ pasos.kodea }}</td>
                <td>{{ pasos.descripcion != null ? pasos.descripcion | capitalize : '' }}</td>
+               <td>{{ pasos.fechapaso != null ? pasos.fechapaso }}</td>
                <td>
                   {% if pasos.documentocreado %}
-                     <a href="{{ asset(pasos.rutaDocumento(urlDocumentos)) }}">
-                        <i class="fa fa-eye" title='{{ "btn.show" | trans | capitalize }}'></i>
+                     <a href="{{ asset(app.request.getBaseURL()~pasos.rutaDocumento(urlDocumentos)) }}" {{ stimulus_controller('document-opener')}} data-action="document-opener#open">
+                        <i class="fa fa-file-word" title='{{ "btn.show" | trans | capitalize }}'></i>
                      </a>&nbsp;
                   {% endif %}
                </td>
@@ -35,3 +37,6 @@
 <div class="d-flex justify-content-center">
    <a href="{{ returnUrl }}" class= "btn btn-secondary col-lg-auto">{{ 'btn.cancel' | trans }}</a>
 </div>
+{{ include('common/_alert.html.twig', {
+   'html': 'messages.documentNotFound' | trans
+}) }}

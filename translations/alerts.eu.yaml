@@ -1,6 +1,7 @@
 message.confirmationTitle: "Konfirma ezazu mesedez"
 message.deletionConfirmationText: "Ziur zaude erregistro hau ezabatu nahi duzula?"
 message.error: "Akatsa"
+message.warning: "Abisua"
 btn.accept: "Bai"
 btn.ok: "Onartu"
 btn.cancel: "Utzi"
