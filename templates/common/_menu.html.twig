@@ -4,8 +4,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+    <ul class="navbar-nav">
 			<li class="nav-item">
 				<a class="nav-link {{ 
 					app.request.attributes.get('_route') == 'regexpedientes_index' or
@@ -13,10 +13,21 @@
 					{{ 'navitem.regexpedientes' | trans | capitalize }}
 				</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ app.request.attributes.get('_route') == 'registros_index' ? 'active': '' }}" href="{{ path('registros_index') }}" id="navbarRegistros" aria-haspopup="true" aria-expanded="false">
+					{{ 'navitem.registros' | trans | capitalize }}
+				</a>
+			</li>
 			{% if app.user %}
 				{% if is_granted('ROLE_ADMIN') %}
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarAdmin" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<li class="nav-item {{ app.request.attributes.get('_route') == 'admin_user_index' or 
+					app.request.attributes.get('_route') == 'admin_user_show' or 
+					app.request.attributes.get('_route') == 'admin_user_edit'
+						? 'active': '' }} dropdown">
+					<a class="nav-link {{ app.request.attributes.get('_route') == 'admin_user_index' or 
+						app.request.attributes.get('_route') == 'admin_user_show' or 
+						app.request.attributes.get('_route') == 'admin_user_edit'
+						? 'active': '' }} dropdown-toggle" href="#" id="navbarAdmin" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						{{ 'navitem.administration' | trans | capitalize }}
 					</a>
 					<div id="js-menu-administration" class="dropdown-menu" aria-labelledby="navbarAdmin">
@@ -24,8 +35,11 @@
 					</div>
 				</li>
 				{% endif %}
-      {% endif %}
+      	{% endif %}
     </ul>
+	<div class="navbar-text mr-1">
+		* {{ 'navitem.hint' | trans | capitalize }}&nbsp;&nbsp;&nbsp;
+	</div>
   </div>
 
 </nav>

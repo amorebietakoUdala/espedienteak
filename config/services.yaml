@@ -6,8 +6,11 @@
 parameters:
     app_name: espedienteak
     # ruta_documentos: '%env(RUTA_DOCUMENTOS)%'
-    url_documentos: '%env(URL_DOCUMENTOS)%'
+    # url_documentos: '%env(URL_DOCUMENTOS)%'
+    documentos_relative_path: '%env(RUTA_RELATIVA_DOCUMENTOS)%'
+    imagenes_relative_path: '%env(RUTA_RELATIVA_IMAGENES)%'
     max_expedientes: 100
+    max_registros: 50
     page_size: 50
 
 services:
@@ -16,12 +19,13 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         bind:
-            $urlDocumentos: '%url_documentos%'
+            $rutaDocumentos: '%kernel.project_dir%/public/%documentos_relative_path%'
+            $urlDocumentos: '/%documentos_relative_path%'
+            $urlImagenes: '/%imagenes_relative_path%'
+            $rutaImagenes: '%kernel.project_dir%/public/%imagenes_relative_path%'
             $maxExpedientes: '%max_expedientes%'
             $parameters:
                 pageSize: '%page_size%'
-
-
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\PasosExpedientes;
+use App\Entity\RegExpedientes;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -37,5 +38,10 @@ class PasosExpedientesRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function getPasosExpendienteOrdered(RegExpedientes $regExpedientes) {
+        $result = $this->findBy(['expediente' => $regExpedientes], [ 'paso' => 'ASC']);
+        return $result;
     }
 }

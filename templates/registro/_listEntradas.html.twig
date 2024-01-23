@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'app.title.registros.index' | trans }}{% endblock %}
+
+{% block header %}{% endblock %}
+{% block menu %}{% endblock %}
+
+{% block body %}
+   {% if entradas is defined and entradas|length > 0 %}
+      <ul class="list-group">
+         {% for entrada in entradas %}
+            <li class="list-group-item">                  
+               <a href="{{ asset(app.request.getBaseURL()~url~registro.getRelativePath()~'/'~entrada) }}" data-action="click->table#onClick" data-pagination="false">
+                  {{ entrada }}
+               </a>&nbsp;
+            </li>
+         {% endfor %}
+      </ul>      
+   {% else %}
+      <div class="alert alert-secondary mt-3" role="alert">{{"messages.results0" | trans }}</div>
+   {% endif %}
+{% endblock %}

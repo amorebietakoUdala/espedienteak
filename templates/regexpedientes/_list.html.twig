@@ -13,6 +13,7 @@
             <th data-sortable="true">{{ 'regexpedientes.dni' | trans }}</th>
             <th data-sortable="true">{{ 'regexpedientes.solicitante' | trans }}</th>
             <th data-sortable="true">{{ 'regexpedientes.fecha' | trans }}</th>
+            {# <th data-sortable="true">{{ 'regexpedientes.registros' | trans }}</th> #}
             <th data-sortable="true" data-field="options">{{"table.options" | trans }}</th>
          </tr>
       </thead>
@@ -26,7 +27,16 @@
                   <td>{{ expediente.fechaentrada != null ? expediente.fechaentrada|date('Y-m-d') : '' }}</td>
                   <td>
                      <a href="{{ path('regexpendientes_detail', { regexpediente: expediente.id}) }}" data-action="click->table#onClick" data-pagination="false">
-                        <i class="fa fa-eye" title='{{ "btn.show" | trans | capitalize }}'></i>
+                        <i class="fa fa-shoe-prints" title='{{ "btn.steps" | trans | capitalize }}'></i>
+                     </a>&nbsp;
+                     <a href="{{ path('registros_expediente_index', { numeroExpediente: expediente.id, tipo: constant('App\\Entity\\Tipo::TIPO_ENTRADA') }) }}" data-action="click->table#onClick" data-pagination="false">
+                        <i class="fa fa-e" title='{{ "btn.input" | trans | capitalize }}'></i>
+                     </a>&nbsp;
+                     <a href="{{ path('registros_expediente_index', { numeroExpediente: expediente.id, tipo: constant('App\\Entity\\Tipo::TIPO_SALIDA')}) }}" data-action="click->table#onClick" data-pagination="false">
+                        <i class="fa fa-s" title='{{ "btn.output" | trans | capitalize }}'></i>
+                     </a>&nbsp;
+                     <a href="{{ path('registros_expediente_index', { numeroExpediente: expediente.id, tipo: constant('App\\Entity\\Tipo::TIPO_OFICIO')}) }}" data-action="click->table#onClick" data-pagination="false">
+                        <i class="fa fa-o" title='{{ "btn.office" | trans | capitalize }}'></i>
                      </a>&nbsp;
                   </td>
             </tr>

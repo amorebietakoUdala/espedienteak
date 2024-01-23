@@ -3,22 +3,17 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use \Symfony\Component\Security\Http\Attribute\IsGranted;
 
-/** 
-* @IsGranted("ROLE_ESPEDIENTEAK")
-*/
+#[IsGranted('ROLE_ESPEDIENTEAK')]
 class DefaultController extends AbstractController
 {
 
-   /**
-    * @Route("/", name="app_home")
-    */
-   public function home(Request $request): Response
+   #[Route(path: '/', name: 'app_home')]
+   public function home() : Response
    {
-      return $this->redirectToRoute('regexpedientes_index');
+       return $this->redirectToRoute('regexpedientes_index');
    }
 }
