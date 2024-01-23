@@ -40,29 +40,24 @@ class RegistroRepository extends ServiceEntityRepository
     }
 
     /**
-    * @return Movement[] Returns an array of Movement objects
+    * @return Registro[] Returns an array of Registro objects
     */
     public function findByCriteria($criteria, $orderBy = null, $limit = null, $offset = null): array
     {
         $criteriaLikeKeys = [
             'descripcion' => null,
-            'solicitante' => null,
         ];
         $criteriaLike = $criteriaAnd = null;
         if ( $criteria !== null ) {
             $criteriaLike = array_intersect_key($criteria,$criteriaLikeKeys);
             $criteriaAnd = array_diff_key($criteria,$criteriaLikeKeys);
         }
-        $from = $criteriaAnd['fechaInicio'] ?? null;
-        unset($criteriaAnd['fechaInicio']);
-        $to = $criteriaAnd['fechaFin'] ?? null;
-        unset($criteriaAnd['fechaFin']);
-        $qb = $this->createQueryBuilder('m');
+        $qb = $this->createQueryBuilder('r');
 
         if ( $criteriaAnd ) {
             foreach ( $criteriaAnd as $field => $filter ) {
                 if ( !empty($criteria[$field])) {
-                    $qb->andWhere('m.'.$field.' = :'.$field)
+                    $qb->andWhere('r.'.$field.' = :'.$field)
                         ->setParameter($field, $filter);
                 }
             }
@@ -70,22 +65,17 @@ class RegistroRepository extends ServiceEntityRepository
         if ( $criteriaLike ) {
             foreach ( $criteriaLike as $field => $filtroa ) {
                 if ( !empty($criteria[$field])) {
-                    $qb->andWhere('m.'.$field.' LIKE :'.$field)
+                    $qb->andWhere('r.'.$field.' LIKE :'.$field)
                     ->setParameter($field, '%'.$filtroa.'%');
                 }
             }
         }
-        if ($from) {
-            $qb->andWhere('m.fechaentrada >= :fechaInicio')
-            ->setParameter('fechaInicio', $from);
-        }
-        if ($to) {
-            $qb->andWhere('m.fechaentrada <= :fechaFin')
-            ->setParameter('fechaFin', $to);
-        }
-        $qb->orderBy('m.id', 'DESC');
+        $qb->orderBy('r.ordenEntradaSalida', 'DESC');
         $qb->setMaxResults($limit);
-        return $qb->getQuery()->getResult();
+        //dd($qb->getQuery());
+        $result = $qb->getQuery()->getResult();
+        //dd($qb->getQuery()->getResult());
+        return $result;
     }
 
 }

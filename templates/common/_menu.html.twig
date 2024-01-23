@@ -13,6 +13,11 @@
 					{{ 'navitem.regexpedientes' | trans | capitalize }}
 				</a>
 			</li>
+			<li class="nav-item">
+				<a class="nav-link {{ app.request.attributes.get('_route') == 'registros_index' ? 'active': '' }}" href="{{ path('registros_index') }}" id="navbarRegistros" aria-haspopup="true" aria-expanded="false">
+					{{ 'navitem.registros' | trans | capitalize }}
+				</a>
+			</li>
 			{% if app.user %}
 				{% if is_granted('ROLE_ADMIN') %}
 				<li class="nav-item {{ app.request.attributes.get('_route') == 'admin_user_index' or 

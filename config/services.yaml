@@ -10,6 +10,7 @@ parameters:
     documentos_relative_path: '%env(RUTA_RELATIVA_DOCUMENTOS)%'
     imagenes_relative_path: '%env(RUTA_RELATIVA_IMAGENES)%'
     max_expedientes: 100
+    max_registros: 50
     page_size: 50
 
 services:
