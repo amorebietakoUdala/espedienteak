@@ -12,7 +12,11 @@ parameters:
     max_expedientes: 100
     max_registros: 50
     page_size: 50
-
+    department: null
+    contactEmail: null
+    departmentDefault: null
+    contactEmailDefault: null
+    
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -26,6 +30,11 @@ services:
             $maxExpedientes: '%max_expedientes%'
             $parameters:
                 pageSize: '%page_size%'
+            $department: '%department%'
+            $contactEmail: '%contactEmail%'
+            $departmentDefault: '%departmentDefault%'
+            $contactEmailDefault: '%contactEmailDefault%'
+
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -53,3 +62,8 @@ services:
                 options:
                     protocol_version: 3
                     referrals: false    
+
+    # Important priority must 100 or less
+    App\EventListener\LocaleEventListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.request', method: 'onKernelRequest', priority: 100 }
