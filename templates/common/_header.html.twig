@@ -1,6 +1,12 @@
 <header class="d-flex mb-2 justify-content-between">
+    {% set url = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+    {% if '/espedienteak-ametx/' in url %}
+        {% set appName = 'espedienteak-ametx' %}
+    {% else %}
+        {% set appName = 'espedienteak' %}
+    {% endif %}
     <div><img class="logo" alt="Udaletxearen logoa" src="{{ asset('build/images/logo.jpg') }}"></div>
-    <div class="ml-auto mr-auto col-lg"><h1>{{ "messages.appTitle" | trans }}</h1></div>
+    <div class="ml-auto mr-auto col-lg"><h1>{{ appName | default('messages.appTitle') | trans }}</h1></div>
 	{% if is_granted('ROLE_USER') %}
 	<div id="span-erabiltzailea" class="col-lg-auto ml-auto">
 	    <div class="dropdown">

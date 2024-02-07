@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 {% trans_default_domain 'user_bundle' %}
 
+{% block header %}
+    {{ include('common/_header.html.twig') }}
+{% endblock header %}
+
 {% block menu %}{% endblock %}
 
 {% block message %}
