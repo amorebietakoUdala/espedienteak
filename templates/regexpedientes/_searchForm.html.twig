@@ -35,6 +35,9 @@
       <div class="col-lg col-md-2 col-sm-6">
          {{ form_row(form.dni, { 'attr': { 'data-regexpedientes-form-target' : "dniInput", 'class' : 'form-control form-control-sm' } }) }}
       </div>
+      <div class="col-lg col-md-2 col-sm-6">
+         {{ form_row(form.finalizado, { 'attr': { 'data-regexpedientes-form-target' : "finalizadoInput", 'class' : 'form-select form-select-sm' } }) }}
+      </div>
       <div class="col-lg-1 col-md-2 col-sm-6">
          <button class="btn btn-primary" type="submit">{{ 'btn.search' | trans }}</button>
       </div>

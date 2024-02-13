@@ -99,6 +99,32 @@ class BaseController extends AbstractController
         return $criteria;
     }
 
+    protected function changeStringToBool(&$criteria) {
+        foreach ( $criteria as $key => $value) {
+            if ( str_starts_with((string) $key, 'finalizado') ) {
+                if ( $value !== 'false') {
+                    $criteria[$key] = true;
+                } else {
+                    $criteria[$key] = false;
+                }
+            }
+        }
+        return $criteria;
+    }
+
+    protected function changeBoolToString(&$criteria) {
+        foreach ( $criteria as $key => $value) {
+            if ( str_starts_with((string) $key, 'finalizado') ) {
+                if ($value === true) {
+                    $criteria[$key] = 'true';
+                } else {
+                    $criteria[$key] = 'false';
+                }
+            }
+        }
+        return $criteria;
+    }
+
     protected function setPage($number): self {
         $this->queryParams['page'] = $number;
         return $this;

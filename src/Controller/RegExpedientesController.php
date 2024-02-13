@@ -47,13 +47,14 @@ class RegExpedientesController extends BaseController
         $criteria = $request->query->all();
         $criteria = $this->removePaginationParameters($criteria);
         $criteria = $this->changeStringToDates($criteria);
+        $criteria = $this->changeStringToBool($criteria);
         $form = $this->createForm(RegExpedienteSearchFormType::class, $criteria, []);
         $regexpedientes = [];
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $regexpedientes = $this->repo->findByCriteria($data,['id' => 'DESC'], $this->maxExpedientes);
             $criteria = $this->removeBlankFilters($data);
+            $regexpedientes = $this->repo->findByCriteria($criteria,['id' => 'DESC'], $this->maxExpedientes);
             $this->setPage(1);
         }
         if ( count($criteria) > 0 && $request->getMethod() === 'GET') {

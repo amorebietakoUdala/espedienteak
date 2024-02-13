@@ -88,6 +88,7 @@ regexpedientes.dni: "DNI"
 regexpedientes.solicitante: "Solicitante"
 regexpedientes.fecha: "Fecha de entrada"
 regexpedientes.registros: "Registros"
+regexpedientes.finalizado: "Finalizado"
 
 pasosexpedientes.kodea: "Código del paso"
 pasosexpedientes.descripcion: "Descripción"

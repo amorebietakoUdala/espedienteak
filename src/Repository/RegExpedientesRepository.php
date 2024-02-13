@@ -61,7 +61,7 @@ class RegExpedientesRepository extends ServiceEntityRepository
 
         if ( $criteriaAnd ) {
             foreach ( $criteriaAnd as $field => $filter ) {
-                if ( !empty($criteria[$field])) {
+                if ( !empty($criteria[$field] || is_bool($filter) )) {
                     $qb->andWhere('m.'.$field.' = :'.$field)
                         ->setParameter($field, $filter);
                 }

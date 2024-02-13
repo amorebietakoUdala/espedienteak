@@ -2,7 +2,7 @@ import { Controller } from '@hotwired/stimulus';
 import $ from 'jquery';
 
 export default class extends Controller {
-   static targets = ['numeroexpedienteInput', 'descripcionInput', 'tipoInput','fechaInicioInput', 'fechaFinInput', 'departamentoInput', 'dniInput', 'solicitanteInput'];
+   static targets = ['numeroexpedienteInput', 'descripcionInput', 'tipoInput','fechaInicioInput', 'fechaFinInput', 'departamentoInput', 'dniInput', 'solicitanteInput', 'finalizadoInput'];
    static values = {
    };
 
@@ -30,6 +30,9 @@ export default class extends Controller {
       }
       if (this.solicitanteInputTarget) {
          $(this.solicitanteInputTarget).val('');
+      }
+      if (this.finalizadoInputTarget) {
+         $(this.finalizadoInputTarget).val('');
       }
    }
 }

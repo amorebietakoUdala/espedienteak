@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Registro;
 use App\Repository\RegistroRepository;
 use App\Entity\Tipo;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

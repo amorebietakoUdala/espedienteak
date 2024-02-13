@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -49,6 +51,15 @@ class RegExpedienteSearchFormType extends AbstractType
             ->add('solicitante', null, [
                 'label' => 'regexpedientes.solicitante',
                 'required' => false,
+            ])
+            ->add('finalizado', ChoiceType::class, [
+                'label' => 'regexpedientes.finalizado',
+                'required' => false,
+                'placeholder' => 'label.choose',
+                'choices' => [
+                    'label.yes' => true,
+                    'label.no' => false,
+                ]
             ])
         ;
     }
