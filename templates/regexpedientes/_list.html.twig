@@ -13,6 +13,7 @@
             <th data-sortable="true">{{ 'regexpedientes.dni' | trans }}</th>
             <th data-sortable="true">{{ 'regexpedientes.solicitante' | trans }}</th>
             <th data-sortable="true">{{ 'regexpedientes.fecha' | trans }}</th>
+            <th data-sortable="true">{{ 'regexpedientes.finalizado' | trans }}</th>
             {# <th data-sortable="true">{{ 'regexpedientes.registros' | trans }}</th> #}
             <th data-sortable="true" data-field="options">{{"table.options" | trans }}</th>
          </tr>
@@ -25,6 +26,7 @@
                   <td>{{ expediente.dni != null ? expediente.dni : '' }}</td>
                   <td>{{ expediente.solicitante != null ? expediente.solicitante | capitalize : '' }}</td>
                   <td>{{ expediente.fechaentrada != null ? expediente.fechaentrada|date('Y-m-d') : '' }}</td>
+                  <td>{{ expediente.finalizado == true ? 'label.yes' | trans : 'label.no' | trans }}</td>
                   <td>
                      <a href="{{ path('regexpendientes_detail', { regexpediente: expediente.id}) }}" data-action="click->table#onClick" data-pagination="false">
                         <i class="fa fa-shoe-prints" title='{{ "btn.steps" | trans | capitalize }}'></i>
