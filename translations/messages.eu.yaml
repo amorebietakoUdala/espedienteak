@@ -96,6 +96,7 @@ pasosexpedientes.fechapaso: "Data"
 
 registro.id: "Id"
 registro.tipo: "Mota"
+registro.dni: "NAN"
 registro.descripcion: "Deskripzioa"
 registro.orden_entrada_salida: "Erregistro zb."
 registro.anno: "Urtea"

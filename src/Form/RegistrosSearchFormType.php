@@ -43,10 +43,10 @@ class RegistrosSearchFormType extends AbstractType
             //     'label' => 'regexpedientes.departamento',
             //     'required' => false,
             // ])
-            // ->add('dni', null, [
-            //     'label' => 'regexpedientes.dni',
-            //     'required' => false,
-            // ])
+            ->add('dni', null, [
+                'label' => 'registro.dni',
+                'required' => false,
+            ])
             // ->add('solicitante', null, [
             //     'label' => 'regexpedientes.solicitante',
             //     'required' => false,

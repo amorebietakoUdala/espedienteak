@@ -50,7 +50,9 @@ class RegistroController extends BaseController
         }
         unset($criteria['returnUrl']);
         if ( $this->checkAtLeastOneFilter($criteria) ) {
-            $registros = $this->repo->findByCriteria($criteria,['id' => 'DESC'], $this->maxRegistros);
+            if ( $request->getMethod() === Request::METHOD_GET) {
+                $registros = $this->repo->findByCriteria($criteria,['id' => 'DESC'], $this->maxRegistros);
+            }
         } else {
             if ( $request->getMethod() === Request::METHOD_POST ) {
                 $this->addFlash('error','messages.chooseAtLeastOneFilter');

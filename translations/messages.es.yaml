@@ -96,6 +96,7 @@ pasosexpedientes.fechapaso: "Fecha"
 
 registro.id: "Id"
 registro.tipo: "Tipo"
+registro.dni: "DNI"
 registro.descripcion: "Descripción"
 registro.orden_entrada_salida: "Nº Registro"
 registro.anno: "Año"

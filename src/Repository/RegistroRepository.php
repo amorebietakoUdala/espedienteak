@@ -44,6 +44,7 @@ class RegistroRepository extends ServiceEntityRepository
     */
     public function findByCriteria($criteria, $orderBy = null, $limit = null, $offset = null): array
     {
+        //dd($criteria);
         $criteriaLikeKeys = [
             'descripcion' => null,
         ];
@@ -72,9 +73,7 @@ class RegistroRepository extends ServiceEntityRepository
         }
         $qb->orderBy('r.ordenEntradaSalida', 'DESC');
         $qb->setMaxResults($limit);
-        //dd($qb->getQuery());
         $result = $qb->getQuery()->getResult();
-        //dd($qb->getQuery()->getResult());
         return $result;
     }
 
