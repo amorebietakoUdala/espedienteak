@@ -9,8 +9,8 @@ parameters:
     # url_documentos: '%env(URL_DOCUMENTOS)%'
     documentos_relative_path: '%env(RUTA_RELATIVA_DOCUMENTOS)%'
     imagenes_relative_path: '%env(RUTA_RELATIVA_IMAGENES)%'
-    max_expedientes: 100
-    max_registros: 50
+    max_expedientes: 1000
+    max_registros: 500
     page_size: 50
     department: null
     contactEmail: null
@@ -28,6 +28,7 @@ services:
             $urlImagenes: '/%imagenes_relative_path%'
             $rutaImagenes: '%kernel.project_dir%/public/%imagenes_relative_path%'
             $maxExpedientes: '%max_expedientes%'
+            $maxRegistros: '%max_registros%'
             $parameters:
                 pageSize: '%page_size%'
             $department: '%department%'
