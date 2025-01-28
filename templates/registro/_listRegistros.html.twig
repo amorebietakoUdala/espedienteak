@@ -9,7 +9,7 @@
       data-page-sortOrder="{{ sortOrder }}">
       <thead>
          <tr>
-            <th data-sortable="true">{{ 'registro.id' | trans }}</th>
+            <th data-sortable="true">{{ 'registro.orden_entrada_salida' | trans }}</th>
             <th data-sortable="true">{{ 'registro.tipo' | trans }}</th>
             <th data-sortable="true">{{ 'registro.anno' | trans }}</th>
             <th data-sortable="true">{{ 'registro.descripcion' | trans }}</th>
@@ -19,7 +19,7 @@
       <tbody>
          {% for registro in registros %}
             <tr>
-                  <td>{{ registro.id }}</td>
+                  <td>{{ registro.ordenEntradaSalida }}</td>
                   <td>{{ registro.tipo }}</td>
                   <td>{{ registro.anno }}</td>
                   <td>{{ registro.descripcion != null ? registro.descripcion : '' }}</td>
