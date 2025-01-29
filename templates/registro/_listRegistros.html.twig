@@ -25,8 +25,13 @@
                   <td>{{ registro.descripcion != null ? registro.descripcion : '' }}</td>
                   <td>
                      {% if registro.id != null %}
-                     <a href="{{ path('regexpedientes_index', { 'id' : registro.expediente}) }}">
+                     <a href="{{ path('api_registro_show', { 'registro' : registro.id}) }}" data-action="click->entrys-opener#openModal">
                         <i class="fa fa-eye" title='{{ "btn.show" | trans | capitalize }}'></i>
+                     </a>&nbsp;
+                     {% endif %}
+                     {% if registro.id != null %}
+                     <a href="{{ path('regexpedientes_index', { 'id' : registro.expediente}) }}">
+                        <i class="fa fa-link" title='{{ "btn.regExpedientes" | trans | capitalize }}'></i>
                      </a>&nbsp;
                      {% endif %}
                   </td>

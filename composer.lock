@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "927416b2834fbed049240910f9624d24",
+    "content-hash": "72e573c0dbb147734a7c7e02064399b2",
     "packages": [
         {
             "name": "amorebietakoudala/stimulus-controller-bundle",
@@ -54,16 +54,16 @@
         },
         {
             "name": "amorebietakoudala/user-bundle",
-            "version": "2.0.4",
+            "version": "2.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/amorebietakoUdala/user-bundle.git",
-                "reference": "e9977c6b5b5002a23245090467332aca82750da3"
+                "reference": "671729b4762c3e94a4b866319109da37797eaee0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/amorebietakoUdala/user-bundle/zipball/e9977c6b5b5002a23245090467332aca82750da3",
-                "reference": "e9977c6b5b5002a23245090467332aca82750da3",
+                "url": "https://api.github.com/repos/amorebietakoUdala/user-bundle/zipball/671729b4762c3e94a4b866319109da37797eaee0",
+                "reference": "671729b4762c3e94a4b866319109da37797eaee0",
                 "shasum": ""
             },
             "require": {
@@ -97,9 +97,9 @@
             "description": "AmorebietakoUdala erabiltzaile bundlela",
             "support": {
                 "issues": "https://github.com/amorebietakoUdala/user-bundle/issues",
-                "source": "https://github.com/amorebietakoUdala/user-bundle/tree/2.0.4"
+                "source": "https://github.com/amorebietakoUdala/user-bundle/tree/2.0.5"
             },
-            "time": "2024-02-01T11:54:46+00:00"
+            "time": "2025-01-29T06:39:17+00:00"
         },
         {
             "name": "composer/semver",
