@@ -26,7 +26,10 @@ class RegExpedientesController extends BaseController
     }
 
     #[Route(path: '/{_locale}/regexpedientes/{regexpediente}/detail', name: 'regexpendientes_detail')]
-    public function show(Request $request, RegExpedientes $regexpediente): Response
+    public function show(
+        Request $request, 
+        #[MapEntity(expr: 'repository.find(regexpediente)')]
+        RegExpedientes $regexpediente): Response
     {
         $this->loadQueryParameters($request);
         $criteria = $request->query->all();

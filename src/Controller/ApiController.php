@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Registro;
 use App\Repository\RegistroRepository;
 use App\Entity\Tipo;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +29,10 @@ class ApiController extends BaseController
     }
 
     #[Route('/registro/{registro}', name: 'api_registro_show')]
-    public function show(Request $request, Registro $registro): Response
+    public function show(
+        Request $request, 
+        #[MapEntity(expr: 'repository.find(registro)')]
+        Registro $registro): Response
     {
         $this->loadQueryParameters($request);
         $pattern = $registro->getNameFilter().$registro->getPattern();
