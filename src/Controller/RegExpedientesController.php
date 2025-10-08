@@ -6,6 +6,7 @@ use App\Entity\RegExpedientes;
 use App\Form\RegExpedienteSearchFormType;
 use App\Repository\PasosExpedientesRepository;
 use App\Repository\RegExpedientesRepository;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
