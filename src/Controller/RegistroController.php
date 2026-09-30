@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\SearchHistoric;
 use App\Form\RegistrosSearchFormType;
 use App\Repository\RegistroRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,7 +17,11 @@ use Symfony\Component\Translation\TranslatableMessage;
 class RegistroController extends BaseController
 {
 
-    public function __construct( private readonly RegistroRepository $repo, private readonly int $maxRegistros = 50)
+    public function __construct( 
+        private readonly EntityManagerInterface $em,
+        private readonly RegistroRepository $repo, 
+        private readonly int $maxRegistros = 50
+    )
     {
     }
 
@@ -46,6 +52,12 @@ class RegistroController extends BaseController
             $data = $form->getData();
             $registros = $this->repo->findByCriteria($data,['id' => 'DESC'], $this->maxRegistros);
             $criteria = $this->removeBlankFilters($data);
+            $searchHistoric = SearchHistoric::createFromArray([
+                'user' => $this->getUser()->getUserIdentifier(),
+                'registros' => $criteria
+            ]);
+            $this->em->persist($searchHistoric);
+            $this->em->flush();            
             $this->setPage(1);
         }
         unset($criteria['returnUrl']);

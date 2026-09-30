@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\RegExpedientes;
+use App\Entity\SearchHistoric;
 use App\Form\RegExpedienteSearchFormType;
 use App\Repository\PasosExpedientesRepository;
 use App\Repository\RegExpedientesRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +19,7 @@ use \Symfony\Component\Security\Http\Attribute\IsGranted;
 class RegExpedientesController extends BaseController
 {
     public function __construct(
+        private readonly EntityManagerInterface $em,
         private readonly PasosExpedientesRepository $pasosRepo, 
         private readonly RegExpedientesRepository $repo,
         $parameters, 
@@ -58,6 +61,12 @@ class RegExpedientesController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $criteria = $this->removeBlankFilters($data);
+            $searchHistoric = SearchHistoric::createFromArray([
+                'user' => $this->getUser()->getUserIdentifier(),
+                'espedientes' => $criteria
+            ]);
+            $this->em->persist($searchHistoric);
+            $this->em->flush();
             $regexpedientes = $this->repo->findByCriteria($criteria,['id' => 'DESC'], $this->maxExpedientes);
             $this->setPage(1);
         }
